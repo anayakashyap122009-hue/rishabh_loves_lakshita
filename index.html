@@ -15,7 +15,7 @@ body {
     color: white;
 }
 
-/* Intro */
+/* Intro Screen */
 #intro {
     position: absolute;
     width: 100%;
@@ -33,6 +33,7 @@ body {
     to { opacity: 0; visibility: hidden; }
 }
 
+/* Main Section */
 #main {
     display: none;
     padding-top: 100px;
@@ -119,22 +120,14 @@ setTimeout(() => {
     document.getElementById("main").style.display = "block";
 }, 4500);
 
+/* NO button just runs away */
 function moveNo() {
     let noBtn = document.getElementById("no");
-    noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
-    noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
-
-    const messages = [
-        "Are you sure my penguin? 🥺",
-        "Think again sweetheart 💖",
-        "Babby pleaseeee 😭",
-        "Cutie don't break my heart 💔",
-        "Try clicking YES instead 😏"
-    ];
-
-    alert(messages[Math.floor(Math.random() * messages.length)]);
+    noBtn.style.top = Math.random() * (window.innerHeight - 60) + "px";
+    noBtn.style.left = Math.random() * (window.innerWidth - 120) + "px";
 }
 
+/* YES button celebration */
 function celebrate() {
     document.getElementById("main").innerHTML = `
         <h1 style="font-size:40px;">
@@ -142,10 +135,10 @@ function celebrate() {
             R ❤️ L FOREVER 💍✨
         </h1>
     `;
-
     startHeartRain();
 }
 
+/* Romantic Heart Rain */
 function startHeartRain() {
     setInterval(() => {
         let heart = document.createElement("div");
