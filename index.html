@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rishabh ❤️ Lakshita</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    overflow: hidden;
+    font-family: 'Courier New', cursive;
+    text-align: center;
+    color: white;
+}
+
+/* Cinematic Intro */
+#intro {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    animation: fadeOut 4s forwards;
+    animation-delay: 4s;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* Main Section */
+#main {
+    display: none;
+    padding-top: 100px;
+}
+
+h1 {
+    font-size: 32px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px pink; }
+    to { text-shadow: 0 0 30px red; }
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    margin: 20px;
+}
+
+#yes {
+    background: hotpink;
+    color: white;
+}
+
+#no {
+    background: grey;
+    color: white;
+    position: absolute;
+}
+
+/* Fireworks */
+.firework {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: explode 1s ease-out infinite;
+}
+
+@keyframes explode {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(25); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Intro Screen -->
+<div id="intro">
+    Rishabh ❤️ Lakshita  
+    <br><br>
+    A Love Story Written In The Stars ✨
+</div>
+
+<!-- Main Proposal -->
+<div id="main">
+    <h1>
+        My Penguin 🐧 <br>
+        My Sweetheart 💖 <br>
+        My Babby 🥺 <br>
+        My Cutie 😘 <br><br>
+        Will You Be My Valentine? 💍
+    </h1>
+
+    <button id="yes" onclick="celebrate()">YES 💖</button>
+    <button id="no" onclick="moveNo()">NO 😏</button>
+</div>
+
+<script>
+setTimeout(() => {
+    document.getElementById("main").style.display = "block";
+}, 4500);
+
+function moveNo() {
+    let noBtn = document.getElementById("no");
+    noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+    noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+
+    const messages = [
+        "Are you sure my penguin? 🥺",
+        "Think again sweetheart 💖",
+        "Babby pleaseeee 😭",
+        "Cutie don't break my heart 💔",
+        "Try clicking YES instead 😏"
+    ];
+
+    alert(messages[Math.floor(Math.random() * messages.length)]);
+}
+
+function celebrate() {
+    alert("SHE SAID YESSSS 😭❤️ FOREVER TOGETHER 💍");
+
+    for (let i = 0; i < 40; i++) {
+        let firework = document.createElement("div");
+        firework.className = "firework";
+        firework.style.top = Math.random() * window.innerHeight + "px";
+        firework.style.left = Math.random() * window.innerWidth + "px";
+        firework.style.background = `hsl(${Math.random()*360},100%,50%)`;
+        document.body.appendChild(firework);
+    }
+}
+</script>
+
+</body>
+</html>
