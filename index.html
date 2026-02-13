@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +8,14 @@
 body {
     margin: 0;
     padding: 0;
-    background: black;
+    background: radial-gradient(circle at top, #1a001a, black);
     overflow: hidden;
     font-family: 'Courier New', cursive;
     text-align: center;
     color: white;
 }
 
-/* Cinematic Intro */
+/* Intro */
 #intro {
     position: absolute;
     width: 100%;
@@ -34,7 +33,6 @@ body {
     to { opacity: 0; visibility: hidden; }
 }
 
-/* Main Section */
 #main {
     display: none;
     padding-top: 100px;
@@ -46,22 +44,27 @@ h1 {
 }
 
 @keyframes glow {
-    from { text-shadow: 0 0 10px pink; }
+    from { text-shadow: 0 0 10px hotpink; }
     to { text-shadow: 0 0 30px red; }
 }
 
 button {
-    padding: 15px 30px;
+    padding: 15px 35px;
     font-size: 20px;
-    border-radius: 30px;
+    border-radius: 40px;
     border: none;
     cursor: pointer;
     margin: 20px;
+    transition: 0.3s;
 }
 
 #yes {
     background: hotpink;
     color: white;
+}
+
+#yes:hover {
+    transform: scale(1.1);
 }
 
 #no {
@@ -70,32 +73,34 @@ button {
     position: absolute;
 }
 
-/* Fireworks */
-.firework {
+/* Heart Rain */
+.heart {
     position: absolute;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    animation: explode 1s ease-out infinite;
+    font-size: 20px;
+    color: pink;
+    animation: fall linear infinite;
 }
 
-@keyframes explode {
-    from { transform: scale(1); opacity: 1; }
-    to { transform: scale(25); opacity: 0; }
+@keyframes fall {
+    from {
+        transform: translateY(-10vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Intro Screen -->
 <div id="intro">
-    Rishabh ❤️ Lakshita  
-    <br><br>
+    Rishabh ❤️ Lakshita <br><br>
     A Love Story Written In The Stars ✨
 </div>
 
-<!-- Main Proposal -->
 <div id="main">
     <h1>
         My Penguin 🐧 <br>
@@ -131,16 +136,31 @@ function moveNo() {
 }
 
 function celebrate() {
-    alert("SHE SAID YESSSS 😭❤️ FOREVER TOGETHER 💍");
+    document.getElementById("main").innerHTML = `
+        <h1 style="font-size:40px;">
+            SHE SAID YESSSS 😭❤️ <br><br>
+            R ❤️ L FOREVER 💍✨
+        </h1>
+    `;
 
-    for (let i = 0; i < 40; i++) {
-        let firework = document.createElement("div");
-        firework.className = "firework";
-        firework.style.top = Math.random() * window.innerHeight + "px";
-        firework.style.left = Math.random() * window.innerWidth + "px";
-        firework.style.background = `hsl(${Math.random()*360},100%,50%)`;
-        document.body.appendChild(firework);
-    }
+    startHeartRain();
+}
+
+function startHeartRain() {
+    setInterval(() => {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "R ❤️ L";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        heart.style.fontSize = (Math.random() * 15 + 15) + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+
+    }, 200);
 }
 </script>
 
